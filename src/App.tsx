@@ -5,63 +5,59 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import styled from "styled-components";
-import Nav from "components/Nav";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-`;
-const Main = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-`;
+import Layout from "components/Layout";
 
 function App() {
   return (
     <Router>
-      <Wrapper>
-        <Main>
-          <Switch>
-            <Route path="/detail">
-              <Detail />
-            </Route>
-            <Route path="/chart">
-              <Chart />
-            </Route>
-            <Route path="/money">
-              <Money />
-            </Route>
-            <Route exact from="/">
-              <Redirect to="/detail" />
-            </Route>
-            <Route path="*">
-              <NoMatch />
-            </Route>
-          </Switch>
-        </Main>
-        <Nav />
-      </Wrapper>
+      <Switch>
+        <Route path="/detail">
+          <Detail />
+        </Route>
+        <Route path="/chart">
+          <Chart />
+        </Route>
+        <Route path="/money">
+          <Money />
+        </Route>
+        <Route exact from="/">
+          <Redirect to="/detail" />
+        </Route>
+        <Route path="*">
+          <NoMatch />
+        </Route>
+      </Switch>
     </Router>
   );
 }
 function Detail() {
-  return <h2>明细</h2>;
+  return (
+    <Layout>
+      <h2>明细</h2>
+    </Layout>
+  );
 }
 
 function Chart() {
-  return <h2>图表</h2>;
+  return (
+    <Layout>
+      <h2>图表</h2>
+    </Layout>
+  );
 }
 
 function Money() {
-  return <h2>记账</h2>;
+  return (
+    <Layout>
+      <h2>记账</h2>
+    </Layout>
+  );
 }
 function NoMatch() {
   return (
-    <div>
+    <Layout>
       <h3>找不到</h3>
-    </div>
+    </Layout>
   );
 }
 
