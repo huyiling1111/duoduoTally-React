@@ -6,12 +6,32 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+import styled from "styled-components";
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+const Main = styled.div`
+  flex-grow: 1;
+  overflow: auto;
+`;
+const Nav = styled.div`
+  > ul {
+    display: flex;
+    > li {
+      width: 33.3%;
+      text-align: center;
+      padding: 16px;
+    }
+  }
+`;
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
+      <Wrapper>
+        <Nav>
           <ul>
             <li>
               <Link to="/detail">detail</Link>
@@ -23,39 +43,40 @@ function App() {
               <Link to="/money">money</Link>
             </li>
           </ul>
-        </nav>
-
-        <Switch>
-          <Route path="/detail">
-            <Home />
-          </Route>
-          <Route path="/chart">
-            <About />
-          </Route>
-          <Route path="/money">
-            <Users />
-          </Route>
-          <Route exact from="/">
-            <Redirect to="/detail" />
-          </Route>
-          <Route path="*">
-            <NoMatch />
-          </Route>
-        </Switch>
-      </div>
+        </Nav>
+        <Main>
+          <Switch>
+            <Route path="/detail">
+              <Detail />
+            </Route>
+            <Route path="/chart">
+              <Chart />
+            </Route>
+            <Route path="/money">
+              <Money />
+            </Route>
+            <Route exact from="/">
+              <Redirect to="/detail" />
+            </Route>
+            <Route path="*">
+              <NoMatch />
+            </Route>
+          </Switch>
+        </Main>
+      </Wrapper>
     </Router>
   );
 }
-function Home() {
-  return <h2>Home</h2>;
+function Detail() {
+  return <h2>明细</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function Chart() {
+  return <h2>图表</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Money() {
+  return <h2>记账</h2>;
 }
 function NoMatch() {
   return (
