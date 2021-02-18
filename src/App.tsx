@@ -5,20 +5,22 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Layout from "components/Layout";
-
+import Money from "./views/Money";
+import Statistics from "./views/Statistics";
+import Tags from "./views/Tags";
+import NoMatch from "./views/NoMatch";
 function App() {
   return (
     <Router>
       <Switch>
         <Route path="/detail">
-          <Detail />
+          <Money />
         </Route>
         <Route path="/chart">
-          <Chart />
+          <Tags />
         </Route>
         <Route path="/money">
-          <Money />
+          <Statistics />
         </Route>
         <Route exact from="/">
           <Redirect to="/detail" />
@@ -28,36 +30,6 @@ function App() {
         </Route>
       </Switch>
     </Router>
-  );
-}
-function Detail() {
-  return (
-    <Layout>
-      <h2>明细</h2>
-    </Layout>
-  );
-}
-
-function Chart() {
-  return (
-    <Layout>
-      <h2>图表</h2>
-    </Layout>
-  );
-}
-
-function Money() {
-  return (
-    <Layout>
-      <h2>记账</h2>
-    </Layout>
-  );
-}
-function NoMatch() {
-  return (
-    <Layout>
-      <h3>找不到</h3>
-    </Layout>
   );
 }
 
