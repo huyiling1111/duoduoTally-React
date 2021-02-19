@@ -6,18 +6,16 @@ const Wrapper = styled.div`
   flex-direction: column;
   height: 100vh;
 `;
-
 const Main = styled.div`
   flex-grow: 1;
   overflow: auto;
 `;
-type Props = {
-  children: any;
-};
-const Layout = (props: Props) => {
+
+const Layout = (props:any) => {
+    console.log(props)
   return (
-    <Wrapper>
-      <Main>{props.children}</Main>
+    <Wrapper >
+      <Main className={props.className} >{props.children}</Main>
       <Nav />
     </Wrapper>
   );
