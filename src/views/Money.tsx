@@ -1,6 +1,7 @@
-import Layout from "../components/Layout";
+import Layout from "components/Layout";
 import styled from "styled-components";
 
+console.log(Layout)
 const CategorySection = styled.section`
   font-size: 24px;
   > ul {
@@ -73,6 +74,7 @@ const NotesSection = styled.section`
   }
 `;
 const NumberPadSection = styled.section`
+
   display: flex;
   flex-direction: column;
   > .output {
@@ -130,8 +132,9 @@ const NumberPadSection = styled.section`
   }
 `;
 const MyLayout = styled(Layout)`
+  border:1px solid red;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 `;
 const Money = () => {
   return (
