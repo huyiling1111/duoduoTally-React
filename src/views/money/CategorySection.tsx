@@ -3,14 +3,17 @@ import React, {useState} from "react";
 
 const Swapper = styled.section`
   font-size: 24px;
+
   > ul {
     display: flex;
     background: #c4c4c4;
+
     > li {
       width: 50%;
       text-align: center;
       padding: 16px 0;
       position: relative;
+
       &.selected::after {
         content: "";
         display: block;
@@ -24,27 +27,21 @@ const Swapper = styled.section`
     }
   }
 `;
-interface  CategoryMap {
-    '-':string,
-    '+':string
-}
-const categoryMap: CategoryMap ={'-':'支出','+':'收入'};
-const CategorySection:React.FC=(props)=>{
-    const [category,setCategory]=useState('-')
 
-    // type Keys=keyof typeof categoryMap;
-    return(
+const categoryMap = {'-': '支出', '+': '收入'};
+type Keys=keyof typeof categoryMap;
+const categoryList:Keys[]=['-','+']
+const CategorySection: React.FC = (props) => {
+    const [category, setCategory] = useState('-')
+    console.log(category)
+
+    return (
         <Swapper>
             <ul>
-            {
-                Object.keys(<CategoryMap>categoryMap).map(c=>
-
-                    {return<li key={c}>{categoryMap[c]}</li>}
-                    )
-                    }
-
-                </ul>
-            }
+                {categoryList.map((c) => {
+                    return <li key={c} className={c===category?'selected':''} onClick={()=>{setCategory(c)}}>{categoryMap[c]}</li>
+                })}
+            </ul>
         </Swapper>
     )
 }
