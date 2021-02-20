@@ -28,9 +28,7 @@ interface  CategoryMap {
     '-':string,
     '+':string
 }
-const categoryMap={'-':'支出','+':'收入'};
-
-
+const categoryMap: CategoryMap ={'-':'支出','+':'收入'};
 const CategorySection:React.FC=(props)=>{
     const [category,setCategory]=useState('-')
 
@@ -38,12 +36,15 @@ const CategorySection:React.FC=(props)=>{
     return(
         <Swapper>
             <ul>
-            {Object.keys(categoryMap).map((c)=>{
+            {
+                Object.keys(<CategoryMap>categoryMap).map(c=>
 
-                return<li key={c}>{categoryMap[c]}</li>
-            })}
+                    {return<li key={c}>{categoryMap[c]}</li>}
+                    )
+                    }
 
-        </ul>
+                </ul>
+            }
         </Swapper>
     )
 }
