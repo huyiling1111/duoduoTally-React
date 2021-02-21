@@ -69,13 +69,18 @@ const Swapper = styled.section`
     }
   }
 `;
-
-const NumberPadSection: React.FC = (props) => {
-    const [output, setOutput] = useState('')
-    console.log(output)
+type Props = {
+    onOk: (value:number) => void;
+}
+const NumberPadSection: React.FC <Props>= (props) => {
+   const [output,setOutput]=useState('')
+    console.log('output',output)
     const handleNumber = (e: React.MouseEvent) => {
+        console.log('执行1',output)
         const text = (e.target as HTMLButtonElement).innerText
-        if (output.length >= 10) return
+        console.log(text,'text')
+        if (output.length >= 10) {return}
+        console.log('执行')
         switch (text) {
             case '0':
             case '1':
@@ -110,7 +115,9 @@ const NumberPadSection: React.FC = (props) => {
                 setOutput('0')
                 break;
             case 'OK':
+                props.onOk(parseFloat(output))
                 setOutput('0')
+
                 console.log('完成')
                 break;
             default:

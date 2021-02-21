@@ -31,15 +31,18 @@ const Swapper = styled.section`
 const categoryMap = {'-': '支出', '+': '收入'};
 type Keys=keyof typeof categoryMap;
 const categoryList:Keys[]=['-','+']
-const CategorySection: React.FC = (props) => {
-    const [category, setCategory] = useState('-')
-    console.log(category)
+type Props = {
+    value: '-' | '+',
+    onChange: (value: '-' | '+') => void;
+}
+const CategorySection: React.FC<Props> = (props) => {
 
+    const category=props.value
     return (
         <Swapper>
             <ul>
                 {categoryList.map((c) => {
-                    return <li key={c} className={c===category?'selected':''} onClick={()=>{setCategory(c)}}>{categoryMap[c]}</li>
+                    return <li key={c} className={c===category?'selected':''} onClick={()=>{props.onChange(c)}}>{categoryMap[c]}</li>
                 })}
             </ul>
         </Swapper>

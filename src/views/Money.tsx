@@ -4,26 +4,39 @@ import {CategorySection} from "./money/CategorySection";
 import {NotesSection} from "./money/NotesSection";
 import {NumberPadSection} from "./money/NumberPadSection";
 import {TagsSection} from "./money/TagsSection";
+import {useState} from "react";
 
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
 `;
+type Category = '-' | '+'
 const Money = () => {
-  return (
-    <MyLayout>
-      <TagsSection/>
-      <NotesSection/>
+    const [data, setData] = useState({
+        tags: [] as string[],
+        note: '',
+        category: '-' as Category,
+        amount: 0 as number,
 
-
-      <CategorySection>
-
-      </CategorySection>
-      <NumberPadSection>
-
-      </NumberPadSection>
-    </MyLayout>
-  );
+    });
+    const onChange = (obj: Partial<typeof data>) => {
+        setData({...data, ...obj});
+    };
+    // console.log(data, 'data')
+    return (
+        <MyLayout>
+            {data.tags.join('')}{data.note}{data.category}{data.amount}
+            <TagsSection value={data.tags} onChange={(tags) => {
+                onChange({tags})
+            }}/>
+            <NotesSection value={data.note} onChange={(note) => {
+                onChange({note})
+            }}/>
+            <CategorySection value={data.category} onChange={category => onChange({category})}/>
+            <NumberPadSection  onOk={(output)=>{onChange({amount:output})} }
+            />
+        </MyLayout>
+    );
 };
 
 export default Money;

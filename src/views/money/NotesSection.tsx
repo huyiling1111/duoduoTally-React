@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 
 const Swapper = styled.section`
   background: #f5f5f5;
@@ -24,13 +24,17 @@ const Swapper = styled.section`
     }
   }
 `;
-const NotesSection: React.FC = (props) => {
-    const [note, setNote] = useState('')
+type Props = {
+    value: string;
+    onChange: (value: string) => void;
+}
+const NotesSection: React.FC<Props> = (props) => {
+    const note=props.value
     const inputRef = useRef<HTMLInputElement>(null);
     const onBlur = () => {
-        inputRef.current && setNote(inputRef.current.value)
+        inputRef.current && props.onChange(inputRef.current.value)
     }
-    console.log(note)
+
     return (
         <Swapper>
             <label>
