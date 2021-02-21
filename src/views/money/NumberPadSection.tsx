@@ -72,15 +72,17 @@ const Swapper = styled.section`
 type Props = {
     onOk: (value:number) => void;
 }
+
+
+
+
 const NumberPadSection: React.FC <Props>= (props) => {
    const [output,setOutput]=useState('')
-    console.log('output',output)
     const handleNumber = (e: React.MouseEvent) => {
-        console.log('执行1',output)
+       console.dir(React)
+        console.log('sss')
         const text = (e.target as HTMLButtonElement).innerText
-        console.log(text,'text')
         if (output.length >= 10) {return}
-        console.log('执行')
         switch (text) {
             case '0':
             case '1':
