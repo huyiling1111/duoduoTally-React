@@ -42,7 +42,7 @@ const Nav = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/chart" activeClassName="selected">
+          <NavLink to="/tags" activeClassName="selected">
             <svg className="icon">
               <use xlinkHref="#labels" />
             </svg>

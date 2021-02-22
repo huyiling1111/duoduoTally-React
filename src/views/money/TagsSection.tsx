@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import React, {useState} from "react";
+import {useTag}  from "useTag"
+import {create} from "domain";
+import {createId} from "../../lib/createId";
 const Wrapper = styled.section`
   background: #ffffff;
   padding: 12px 16px;
@@ -36,7 +39,7 @@ type Props = {
     onChange: (selected: string[]) => void;
 }
 const TagsSection:React.FC<Props>=(props)=>{
-    const[tags,setTags]=useState<string[]>(['衣','食','住','行']);
+    const {tags,setTags}=useTag()
     const selectedTags=props.value
     const onChange={props}
 
@@ -51,8 +54,9 @@ const TagsSection:React.FC<Props>=(props)=>{
     }
     const onAddTag=()=>{
         const tagName = window.prompt('新标签的名称为');
-        if (tagName !== null&&tags.indexOf(tagName)<0) {
-            setTags([...tags, tagName]);
+
+        if (tagName !== null&&tags.map(tag=>tag.name).indexOf(tagName)<0) {
+            setTags([...tags,{'id':createId(),'name':tagName}]);
         }else{
             window.alert('重复了')
         }
@@ -60,9 +64,9 @@ const TagsSection:React.FC<Props>=(props)=>{
     const getClass = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
 return(
     <Wrapper>
-    <ol>{tags.map((tag)=>(<li key={tag}  onClick={()=>{onTagToggle(tag)}}
-        className={getClass(tag)}>
-        {tag}
+    <ol>{tags.map((tag)=>(<li key={tag.id}  onClick={()=>{onTagToggle(tag.name)}}
+        className={getClass(tag.name)}>
+        {tag.name}
         </li>
     ))
     }
