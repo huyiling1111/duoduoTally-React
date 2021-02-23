@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, {useRef, useState} from "react";
+import {Input} from "../../components/Input";
 
 const Swapper = styled.section`
   background: #f5f5f5;
@@ -29,19 +30,13 @@ type Props = {
     onChange: (value: string) => void;
 }
 const NotesSection: React.FC<Props> = (props) => {
-    const note=props.value
-    const inputRef = useRef<HTMLInputElement>(null);
-    const onBlur = () => {
-        inputRef.current && props.onChange(inputRef.current.value)
-    }
+    const {value,onChange}=props
+    console.log(value,'备注')
+
 
     return (
         <Swapper>
-            <label>
-                <span>备注</span>
-                <input ref={inputRef} defaultValue={note} type="text" placeholder="在这里添加备注"
-                       onBlur={onBlur}/>
-            </label>
+            <Input label="备注"  note={value}  onChange={onChange}></Input>
         </Swapper>
     )
 }
