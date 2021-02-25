@@ -4,11 +4,13 @@ import styled from 'styled-components';
 const Label = styled.label`
     display:flex;
     align-items: center;
+
     > span { margin-right: 16px; white-space: nowrap; }
     > input {
+   
       display:block;
       width: 100%;
-      height: 72px;
+      height: 44px;
       background: none;
       border: none;
     }
@@ -16,7 +18,7 @@ const Label = styled.label`
 
 type Props = {
     label: string;
-
+    placeholder:string;
     note:string;
     onChange: (value: string) => void;
 };
@@ -28,11 +30,11 @@ const Input: React.FC<Props> = (props) => {
     }
 
     return (
-        <label>
+        <Label>
             <span>{props.label}</span>
-            <input ref={inputRef} defaultValue={props.note} type="text" placeholder="在这里添加备注"
+            <input ref={inputRef} defaultValue={props.note} type="text" placeholder={props.placeholder}
                    onBlur={onBlur}/>
-        </label>
+        </Label>
     );
 };
 

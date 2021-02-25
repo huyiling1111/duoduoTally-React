@@ -31,12 +31,9 @@ type Props = {
 }
 const NotesSection: React.FC<Props> = (props) => {
     const {value,onChange}=props
-    console.log(value,'备注')
-
-
     return (
         <Swapper>
-            <Input label="备注"  note={value}  onChange={onChange}></Input>
+            <Input label="备注"  note={value}  onChange={onChange} placeholder="请输入内容"></Input>
         </Swapper>
     )
 }

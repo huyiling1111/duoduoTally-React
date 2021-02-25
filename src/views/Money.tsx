@@ -19,14 +19,14 @@ const Money = () => {
         amount: 0 as number,
 
     });
-    console.log(data,'data')
+
     const onChange = (obj: Partial<typeof data>) => {
         setData({...data, ...obj});
     };
 
     return (
         <MyLayout>
-            {data.tags.join('')}{data.note}{data.category}{data.amount}
+            {JSON.stringify(data)}
             <TagsSection value={data.tags} onChange={(tags) => {
                 onChange({tags})
             }}/>

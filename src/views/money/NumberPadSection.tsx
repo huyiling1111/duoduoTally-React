@@ -8,6 +8,7 @@ const Swapper = styled.section`
   > .output {
     background: white;
     font-size: 36px;
+    height:72px;
     line-height: 72px;
     text-align: right;
     padding: 0 16px;
@@ -79,8 +80,8 @@ type Props = {
 const NumberPadSection: React.FC <Props>= (props) => {
    const [output,setOutput]=useState('')
     const handleNumber = (e: React.MouseEvent) => {
-       console.dir(React)
-        console.log('sss')
+
+
         const text = (e.target as HTMLButtonElement).innerText
         if (output.length >= 10) {return}
         switch (text) {
@@ -94,7 +95,7 @@ const NumberPadSection: React.FC <Props>= (props) => {
             case '7':
             case '8':
             case '9':
-                if (output.slice(0, 1) === "0") {
+                if (output.slice(0, 1) === "0"&&output.indexOf('.') === -1) {
                     setOutput(text)
                 } else {
                     setOutput(output + text)
@@ -120,7 +121,6 @@ const NumberPadSection: React.FC <Props>= (props) => {
                 props.onOk(parseFloat(output))
                 setOutput('0')
 
-                console.log('完成')
                 break;
             default:
                 return '';

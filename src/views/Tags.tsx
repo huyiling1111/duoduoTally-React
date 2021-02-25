@@ -41,12 +41,14 @@ const Space = styled.div`
 
 
 const Tags = () => {
-    const {tags, setTags} = useTag()
+    const {tags, addTag} = useTag()
+    console.log('tags',tags)
+
     return (
         <MyLayout>
             <Swapper>
                 {tags.map((tag) => {
-                    return <li className="oneLine" key={tag.id}><Link to={`/tags/${tag.id}`}><span>{tag.name}</span> <Icon name="right"></Icon></Link>
+                    return <li className="oneLine" key={tag.id}><Link to={`/tags/${tag.id}`}><span>{tag.id}{tag.name}</span> <Icon name="right"></Icon></Link>
                     </li>
                 })}
             </Swapper>
@@ -54,7 +56,7 @@ const Tags = () => {
                 <Space/>
                 <Space/>
                 <Space/>
-                <Button>新增标签</Button>
+                <Button onClick={addTag}>新增标签</Button>
             </Center>
         </MyLayout>
     );
