@@ -13,7 +13,7 @@ const MyLayout = styled(Layout)`
 type Category = '-' | '+'
 const Money = () => {
     const [data, setData] = useState({
-        tags: [] as string[],
+        tags: [] as number[],
         note: '',
         category: '-' as Category,
         amount: 0 as number,

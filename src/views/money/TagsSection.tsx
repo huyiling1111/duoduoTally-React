@@ -35,21 +35,23 @@ const Wrapper = styled.section`
   }
 `;
 type Props = {
-    value: string[];
-    onChange: (selected: string[]) => void;
+    value: number[];
+    onChange: (selected: number[]) => void;
 }
 const TagsSection:React.FC<Props>=(props)=>{
     const {tags,setTags}=useTag()
-    const selectedTags=props.value
+    console.log('TAGSEC',tags)
+    const selectedTagIds=props.value
+    console.log(selectedTagIds,'1')
     const onChange={props}
 
-    const onTagToggle=(tag:string)=>{
-      const index=selectedTags.indexOf(tag)
+    const onTagToggle=(tagId:number)=>{
+      const index=selectedTagIds.indexOf(tagId)
      if(index>=0){
          props.onChange([])
      }
      else{
-         props.onChange([...selectedTags,tag])
+         props.onChange([...selectedTagIds,tagId])
      }
     }
     const onAddTag=()=>{
@@ -61,11 +63,11 @@ const TagsSection:React.FC<Props>=(props)=>{
             window.alert('重复了')
         }
     }
-    const getClass = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
+    const getClass = (tagId: number) => selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
 return(
     <Wrapper>
-    <ol>{tags.map((tag)=>(<li key={tag.id}  onClick={()=>{onTagToggle(tag.name)}}
-        className={getClass(tag.name)}>
+    <ol>{tags.map((tag)=>(<li key={tag.id}  onClick={()=>{onTagToggle(tag.id)}}
+        className={getClass(tag.id)}>
         {tag.name}
         </li>
     ))
