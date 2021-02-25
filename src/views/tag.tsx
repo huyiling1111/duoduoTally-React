@@ -1,5 +1,5 @@
 import React from 'react';
-import {useTag} from "../useTag";
+import {useTag} from "../hooks/useTag";
 import {
     useHistory,
     useParams

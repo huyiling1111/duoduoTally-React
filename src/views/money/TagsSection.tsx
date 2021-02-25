@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, {useState} from "react";
-import {useTag}  from "useTag"
+import {useTag}  from "hooks/useTag"
 import {create} from "domain";
 import {createId} from "../../lib/createId";
 const Wrapper = styled.section`

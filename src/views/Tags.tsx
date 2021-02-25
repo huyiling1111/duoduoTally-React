@@ -2,7 +2,7 @@ import Layout from "components/Layout";
 import Icon from "components/Icon";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import {useTag} from "useTag"
+import {useTag} from "hooks/useTag"
 import {Button} from 'components/Button';
 
 const MyLayout = styled(Layout)`
