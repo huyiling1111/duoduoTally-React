@@ -40,9 +40,9 @@ type Props = {
 }
 const TagsSection:React.FC<Props>=(props)=>{
     const {tags,setTags}=useTag()
-    console.log('TAGSEC',tags)
+
     const selectedTagIds=props.value
-    console.log(selectedTagIds,'1')
+
     const onChange={props}
 
     const onTagToggle=(tagId:number)=>{

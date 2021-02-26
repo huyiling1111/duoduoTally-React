@@ -71,14 +71,16 @@ const Swapper = styled.section`
   }
 `;
 type Props = {
+    value:number;
     onOk: (value:number) => void;
+    onChange:(amount:number)=>void;
 }
 
 
 
 
 const NumberPadSection: React.FC <Props>= (props) => {
-   const [output,setOutput]=useState('')
+   const [output,setOutput]=useState(props.value.toString())
     const handleNumber = (e: React.MouseEvent) => {
 
 
@@ -97,25 +99,31 @@ const NumberPadSection: React.FC <Props>= (props) => {
             case '9':
                 if (output.slice(0, 1) === "0"&&output.indexOf('.') === -1) {
                     setOutput(text)
+                    props.onChange(parseInt(text))
                 } else {
                     setOutput(output + text)
+                    props.onChange(parseInt(output + text))
                 }
                 break;
             case '.' :
                 if (output.indexOf('.') > -1) {
                 } else {
                     setOutput(output + text)
+                    props.onChange(parseInt(output + text))
                 }
                 break;
             case '删除':
                 if (output.length <= 1) {
                     setOutput('0')
+                    props.onChange(0)
                 } else {
                     setOutput(output.slice(0, -1))
+                    props.onChange(parseInt(output.slice(0, -1)))
                 }
                 break;
             case'清空':
                 setOutput('0')
+                props.onChange(0)
                 break;
             case 'OK':
                 props.onOk(parseFloat(output))
@@ -131,8 +139,8 @@ const NumberPadSection: React.FC <Props>= (props) => {
 
     return (
         <Swapper>
-            <div className="output">{output}</div>
-            <div className="pad clearfix" onClick={handleNumber}>
+            <div className="output" >{output}</div>
+            <div className="pad clearfix" onClick={handleNumber} >
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>

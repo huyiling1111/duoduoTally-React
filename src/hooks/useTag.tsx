@@ -18,6 +18,10 @@ const useTag = () => {
       useUpdate(()=>{localStorage.setItem('tags',JSON.stringify(tags))},[tags])
 
    const findTag=(id:string)=>{ return tags.filter((tag)=>{return tag.id ===parseInt(id)})[0]}
+    const getName = (id: number) => {
+        const tag = tags.filter(t => t.id === id)[0];
+        return tag ? tag.name : '';
+    };
    const updateTag=(id:string,{name:name}:{name:string})=>{
        const index= tags.indexOf(findTag(id)) //索引
        const cloneTags= JSON.parse(JSON.stringify(tags))
@@ -35,6 +39,6 @@ const useTag = () => {
         }
     };
 
-    return {tags, setTags,findTag,updateTag,deleteTag,addTag}
+    return {tags, setTags,findTag,updateTag,deleteTag,addTag,getName}
 }
 export {useTag}

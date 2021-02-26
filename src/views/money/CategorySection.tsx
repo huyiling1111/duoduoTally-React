@@ -33,7 +33,7 @@ type Keys=keyof typeof categoryMap;
 const categoryList:Keys[]=['-','+']
 type Props = {
     value: '-' | '+',
-    onChange: (value: '-' | '+') => void;
+    onChange: (c: '-' | '+') => void;
 }
 const CategorySection: React.FC<Props> = (props) => {
 
