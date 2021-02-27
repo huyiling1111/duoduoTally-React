@@ -36,13 +36,14 @@ const Money = () => {
     return (
         <MyLayout>
             {JSON.stringify(selected)}
+            <CategorySection value={selected.category} onChange={category => onChange({category})}/>
             <TagsSection value={selected.tagIds} onChange={(tagIds) => {
                 onChange({tagIds})
             }}/>
             <NotesSection value={selected.note} onChange={(note) => {
                 onChange({note})
             }}/>
-            <CategorySection value={selected.category} onChange={category => onChange({category})}/>
+
             <NumberPadSection value={selected.amount}
                               onChange={amount => onChange({amount})}
                               onOk={submit}
