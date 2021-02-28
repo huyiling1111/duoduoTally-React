@@ -61,7 +61,8 @@ const CategorySection: React.FC<Props> = (props) => {
     const category = props.value
     return (
         <Swapper>
-            <Icon  name="back"   onClick={() => history.goBack()}/>
+            <span/>
+            {/*<Icon  name="back"   onClick={() => history.goBack()}/>*/}
             <ul>
                 {categoryList.map((c) => {
                     return <li key={c} className={c === category ? 'selected' : ''} onClick={() => {

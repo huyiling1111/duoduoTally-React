@@ -1,14 +1,16 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
+import {createId} from "../lib/createId";
 
 export type RecordItem = {
-    tagIds: number[]
+    tag: TagItem
     note: string
+    id:number
     category: '+' | '-'
     amount: number
     createdAt: string // ISO 8601
 }
-type newRecordItem = Omit<RecordItem, 'createdAt'>
+type newRecordItem = Omit<RecordItem, 'createdAt' |'id'>
 
 export const useRecords = () => {
     const [records, setRecords] = useState<RecordItem[]>([]);
@@ -25,15 +27,26 @@ export const useRecords = () => {
             alert('请输入金额');
             return false;
         }
-        if (newRecord.tagIds.length === 0) {
+        if (Object.keys(newRecord.tag).length === 0) {
             alert('请选择标签');
             return false;
         }
-        const record = {...newRecord, createdAt: (new Date()).toISOString()};
+        const record = {...newRecord, createdAt: (new Date()).toISOString(),id:createId()};
         setRecords([...records, record]);
         return true;
     };
+   const deleteRecord=(id:string)=>{
+       const newRecords=records.filter((record)=>{
+           return record.id.toString()!==id
+       })
+       setRecords(newRecords)
+   }
+   const updateRecord=(id:string,record:RecordItem)=>{
+    const newRecords=records.map((r)=>{return r.id.toString()===id?record:r})
+
+       setRecords(newRecords)
+   }
 
 
-    return {records, addRecord};
+    return {records, addRecord,deleteRecord,updateRecord};
 };

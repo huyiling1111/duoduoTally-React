@@ -15,7 +15,7 @@ type Category = '-' | '+'
 
 
 const defaultFormData = {
-    tagIds: [] as number[],
+    tag: {} as TagItem,
     note: '',
     category: '-' as Category,
     amount: 0
@@ -23,23 +23,25 @@ const defaultFormData = {
 const Money = () => {
     const [selected, setSelected] = useState(defaultFormData);
     const {records, addRecord} = useRecords();
+    const record =undefined
     const onChange = (obj: Partial<typeof selected>) => {
         setSelected({...selected, ...obj});
     };
     console.log(selected,'selected')
+    console.log(records,'records')
+
     const submit = () => {
         if (addRecord(selected)) {
             alert('保存成功');
             setSelected(defaultFormData);
+
         }
     };
     return (
         <MyLayout>
-            {JSON.stringify(selected)}
+            {/*{JSON.stringify(selected)}*/}
             <CategorySection value={selected.category} onChange={category => onChange({category})}/>
-            <TagsSection value={selected.tagIds} onChange={(tagIds) => {
-                onChange({tagIds})
-            }}/>
+            <TagsSection  category={selected.category} defaultTag={record} onSelect={tag=>{onChange({tag})}}/>
             <NotesSection value={selected.note} onChange={(note) => {
                 onChange({note})
             }}/>

@@ -41,22 +41,22 @@ const Space = styled.div`
 
 
 const Tags = () => {
-    const {tags, addTag} = useTag()
-    console.log('tags',tags)
+    // const {tags, addTag} = useTag()
+    // console.log('tags',tags)
 
     return (
         <MyLayout>
             <Swapper>
-                {tags.map((tag) => {
-                    return <li className="oneLine" key={tag.id}><Link to={`/tags/${tag.id}`}><span>{tag.id}{tag.name}</span> <Icon name="right"></Icon></Link>
-                    </li>
-                })}
+                {/*{tags.map((tag) => {*/}
+                {/*    return <li className="oneLine" key={tag.id}><Link to={`/tags/${tag.id}`}><span>{tag.id}{tag.name}</span> <Icon name="right"></Icon></Link>*/}
+                {/*    </li>*/}
+                {/*})}*/}
             </Swapper>
             <Center>
                 <Space/>
                 <Space/>
                 <Space/>
-                <Button onClick={addTag}>新增标签</Button>
+                {/*<Button onClick={addTag}>新增标签</Button>*/}
             </Center>
         </MyLayout>
     );
