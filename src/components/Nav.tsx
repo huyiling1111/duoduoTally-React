@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Icon from "components/Icon";
 import React from "react";
+import theme from "../constants/theme";
 
 const NavWrapper = styled.div`
   line-height: 24px;
@@ -18,9 +19,9 @@ const NavWrapper = styled.div`
         justify-content: center;
         align-items: center;
         &.selected {
-          color: red;
+          color: ${theme.color};
           > .icon {
-            fill: red;
+            fill: ${theme.color};
           }
         }
         > .icon {
@@ -37,26 +38,27 @@ const Nav = () => {
       <ul>
         <li>
           <NavLink to="/detail" activeClassName="selected">
-            <Icon name="money" />
+            <svg className="icon">
+              <use xlinkHref="#statistics" />
+            </svg>
             明细
           </NavLink>
         </li>
         <li>
-          <NavLink to="/tags" activeClassName="selected">
-            <svg className="icon">
-              <use xlinkHref="#labels" />
-            </svg>
-            标签
+          <NavLink to="/money" activeClassName="selected">
+            <Icon name="money" />
+            记一笔
           </NavLink>
         </li>
         <li>
-          <NavLink to="/money" activeClassName="selected">
+          <NavLink to="/chart" activeClassName="selected">
             <svg className="icon">
-              <use xlinkHref="#statistics" />
+              <use xlinkHref="#labels" />
             </svg>
-            记账
+            图表
           </NavLink>
         </li>
+
       </ul>
     </NavWrapper>
   );

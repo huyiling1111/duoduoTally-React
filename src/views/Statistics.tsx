@@ -22,9 +22,13 @@ const Item = styled.div`
   display:flex;
   justify-content: space-between;
   background: white;
-  font-size: 18px;
+  color: #797979;
+  font-size: 14px;
   line-height: 20px;
   padding: 10px 16px;
+  >.tagTitle{
+    margin-left:20px;
+  }
   > .note{
     margin-right: auto;
     margin-left: 16px;
@@ -32,7 +36,8 @@ const Item = styled.div`
   }
 `;
 const Header = styled.h3`
-  font-size: 18px;
+  font-size: 12px;
+  color:#949494;
   line-height: 20px;
   padding: 10px 16px;
 `;
@@ -99,7 +104,7 @@ function Statistics() {
                         return <Item key={r.id} onClick={()=>{showActionSheet((r.id!).toString())}}>
                             <div className="tags oneLine">
                            <Icon name={r.tag.value}></Icon>
-                                <span>{r.tag.title}</span>
+                                <span className='tagTitle'>{r.tag.title}</span>
                             </div>
                             {r.note && <div className="note">
                                 {r.note}

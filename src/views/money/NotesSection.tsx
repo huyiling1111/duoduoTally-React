@@ -3,7 +3,7 @@ import React, {useRef, useState} from "react";
 import {Input} from "../../components/Input";
 
 const Swapper = styled.section`
-  background: #f5f5f5;
+  background: white;
   padding: 0 16px;
   font-size: 14px;
 

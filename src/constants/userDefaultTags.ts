@@ -33,5 +33,4 @@ export const userIncomeTags: TagItem[] = [
   { title: '奖金', value: 'bonus' },
   { title: '报销', value: 'refund' },
   { title: '礼金', value: 'giftCash' },
-
 ]

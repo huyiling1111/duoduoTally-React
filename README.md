@@ -1,5 +1,5 @@
 ## 多多记账 React 版
-預覽鏈接：
+預覽鏈接：https://huyiling1111.github.io/duoduoTally-React-website
 
 
 ## 技术栈
@@ -18,7 +18,7 @@
 3. 使用了Ant Design Mobile的DatePicker和Picker等组件来提升用户体验
 4. 因为记账项目数据量并不大，因此使用了LocalStorage，进行了数据持久化
 5. 使用ECharts来进行记账数据的统计和分析
-6. 代码的编写使用了TypeScript，TypeScript和React Hooks搭配，使得写代码的体验极大的提升
+6. 代码的编写使用了TypeScript，TypeScript和React 自定义Hooks搭配，使得写代码的体验极大的提升
 7. 引入svg，並進行了封裝
 
 

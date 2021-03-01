@@ -67,6 +67,7 @@ const CategorySection: React.FC<Props> = (props) => {
                 {categoryList.map((c) => {
                     return <li key={c} className={c === category ? 'selected' : ''} onClick={() => {
                         props.onChange(c)
+                        console.log('222')
                     }}>{categoryMap[c]}</li>
                 })}
             </ul>

@@ -65,10 +65,14 @@ export const Title = styled.span`
 `
 type Props = {
     category:'-'|'+'
-    defaultTag?: TagItem
+    value: TagItem
     onSelect: (tag: TagItem) => void
 }
 const TagsSection:React.FC<Props>=(props)=>{
+    useEffect(()=>{
+        Object.keys(props.value).length&&setSelectedTag(props.value)
+
+    },[props.value])
     // console.log('sss')
     const [selectedTag, setSelectedTag] = useState<TagItem>()
     const {userTags}=useTag(props.category)

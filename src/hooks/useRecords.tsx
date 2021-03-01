@@ -13,16 +13,20 @@ export type RecordItem = {
 type newRecordItem = Omit<RecordItem, 'createdAt' |'id'>
 
 export const useRecords = () => {
+    console.log('11')
     const [records, setRecords] = useState<RecordItem[]>([]);
+    console.log('records',records)
     useEffect(() => {
+
         setRecords(JSON.parse(window.localStorage.getItem('records') || '[]'));
     }, []);
     useUpdate(() => {
+
         window.localStorage.setItem('records', JSON.stringify(records));
     }, [records]);
 
     const addRecord = (newRecord: newRecordItem) => {
-        console.log(newRecord)
+
         if (newRecord.amount <= 0) {
             alert('请输入金额');
             return false;
@@ -46,7 +50,16 @@ export const useRecords = () => {
 
        setRecords(newRecords)
    }
+  const getRecord=(id:string)=>{
+   let myRecords:RecordItem[]=JSON.parse(window.localStorage.getItem('records')||'')
+      const newRecord= myRecords.filter((record)=>{
+           return record.id.toString()===id
+       })
+         return newRecord[0]
 
 
-    return {records, addRecord,deleteRecord,updateRecord};
+
+  }
+
+    return {records, addRecord,deleteRecord,updateRecord,getRecord};
 };
